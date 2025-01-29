@@ -1,0 +1,10 @@
+*.root
+*.log
+*.tmp
+*.swp
+build/
+inst/
+DY_Target/data
+DY_Dump/data
+JPsi_Target/data
+JPsi_Dump/data
