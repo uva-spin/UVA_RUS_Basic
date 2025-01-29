@@ -36,7 +36,7 @@ The basic file structure is defined to include only the minimum or most signific
    ```bash
    cd UVA_RUS_Basic
    ```
-4. Set up the environment and compile the library:
+4. Set up the environment:
    ```bash
     source /project/ptgroup/spinquest/this-e1039.sh
    ```
