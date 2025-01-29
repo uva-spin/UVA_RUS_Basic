@@ -30,7 +30,7 @@ The basic file structure is defined to include only the minimum or most signific
 1. Access the [Rivanna computer](https://ood.hpc.virginia.edu/pun/sys/dashboard).
 2. Clone the repository:
    ```bash
-   git clone https://github.com/forhadnmsu/UVA_RUS_Basic
+   git clone https://github.com/uva-spin/UVA_RUS_Basic
    ```
 3. Go to the repository:
    ```bash
