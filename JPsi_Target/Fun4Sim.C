@@ -321,7 +321,7 @@ int Fun4Sim(const int nevent = 10)
         tree->SetFileName("RUS.root");
         se->registerOutputManager(tree);
  
-	const bool count_only_good_events = false;
+	const bool count_only_good_events = true;
 	se->run(nevent, count_only_good_events);
 
 	PHGeomUtility::ExportGeomtry(se->topNode(),"geom.root");

@@ -6,4 +6,4 @@
 #SBATCH --error=slurm.err
 #SBATCH --partition=standard
 #SBATCH -A spinquest_standard
-root -l -b Fun4Sim.C
+root -l -b 'Fun4Sim.C('$1')'

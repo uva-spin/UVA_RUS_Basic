@@ -27,6 +27,7 @@ The basic file structure is defined to include only the minimum or most signific
 
 # Simulation Guide
 
+
 1. Access the [Rivanna computer](https://ood.hpc.virginia.edu/pun/sys/dashboard).
 2. Clone the repository:
    ```bash
@@ -40,14 +41,14 @@ The basic file structure is defined to include only the minimum or most signific
    ```bash
     source /project/ptgroup/spinquest/this-e1039.sh
    ```
-5. Run the simulation macro locally for testing. You can use the package based on your interest. For example, let's use Drell-Yan events, where the beam interaction point is at the target location:
+5. Run the simulation macro locally for testing. In the Fun4Sim.C macro, we have used: ``const `bool count_only_good_events = false; se->run(nevent, count_only_good_events);``` This means that the Fun4All macro will keep running until we get accepted events, as required by the SQGeomAcc condition.You can use the package based on your interest. For example, let's use Drell-Yan events, where the beam interaction point is at the target location:
    ```bash
    cd DY_Target
-   root -b 'Fun4Sim.C(1000)'
+   root -b 'Fun4Sim.C(10)'
    ```
 6. Once the job runs locally and looks alright, you can submit a few jobs on the grid before submitting large jobs:
    ```bash
-   ./jobscript.sh test 2 1000
+   ./jobscript.sh test 2 10
    ```
    - `test` is the name of this job, used as the name of a new directory to store job outputs.
    - `2` is the number of jobs.
@@ -57,6 +58,13 @@ The basic file structure is defined to include only the minimum or most signific
    
 7. Once everything looks alright, submit large jobs. For example:
    ```bash
-   ./jobscript.sh DY_Target 100 10000
+   ./jobscript.sh DY_Target 100 1000
    ```
 8. For more detailed information regarding job subscriptions, read the instructions here: [SpinQuest Monte Carlo Generation on Rivanna](https://confluence.admin.virginia.edu/display/twist/SpinQuest+Monte+Carlo+Generation+on+Rivanna).
+
+
+In the Fun4Sim.C macro, we have used:
+
+```cpp
+const bool count_only_good_events = false;
+se->run(nevent, count_only_good_events);

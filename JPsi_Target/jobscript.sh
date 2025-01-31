@@ -27,10 +27,11 @@ do
   cp $dir_macros/*.cfg .
   cp $dir_macros/*.txt .
   cp $dir_macros/*.slurm .
+  cp -r $dir_macros/UVA_RUS_Basic .
   sed -i "s/1234/$nevents/" Fun4Sim.C
 
   echo "submitting job number = $id"
-  sbatch grid.slurm
+  sbatch grid.slurm $nevents
     
 
 done 
