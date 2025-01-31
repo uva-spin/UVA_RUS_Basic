@@ -41,11 +41,20 @@ The basic file structure is defined to include only the minimum or most signific
    ```bash
     source /project/ptgroup/spinquest/this-e1039.sh
    ```
-5. Run the simulation macro locally for testing. In the Fun4Sim.C macro, we have used: ``const `bool count_only_good_events = false; se->run(nevent, count_only_good_events);``` This means that the Fun4All macro will keep running until we get accepted events, as required by the SQGeomAcc condition.You can use the package based on your interest. For example, let's use Drell-Yan events, where the beam interaction point is at the target location:
+
+5. This repository contains the simulation macros and code to test and run the Fun4Sim simulation locally. Run the simulation macro locally for testing. In the `Fun4Sim.C` macro, we have used: 
+
+```cpp
+const bool count_only_good_events = false; 
+se->run(nevent, count_only_good_events);
+
+This means that the Fun4All macro will keep running until we get accepted events, as required by the SQGeomAcc condition.You can use the package based on your interest. For example, let's use Drell-Yan events, where the beam interaction point is at the target location:
+
    ```bash
    cd DY_Target
    root -b 'Fun4Sim.C(10)'
    ```
+
 6. Once the job runs locally and looks alright, you can submit a few jobs on the grid before submitting large jobs:
    ```bash
    ./jobscript.sh test 2 10
