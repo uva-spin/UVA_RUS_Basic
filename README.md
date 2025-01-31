@@ -61,7 +61,7 @@ This means that the Fun4All macro will keep running until we get accepted events
    ```
    - `test` is the name of this job, used as the name of a new directory to store job outputs.
    - `2` is the number of jobs.
-   - `1000` is the number of events per job.
+   - `10` is the number of accepted events per job.
    - Job outputs will appear under `/sfs/weka/scratch/<username>/MC`.
    - You can use "squeue -u user", to check the status of your jobs (or use the "Active Jobs" tab on your UVA OpenOnDemand [web page:](https://ood.hpc.virginia.edu/pun/sys/dashboard/activejobs?jobcluster=all&jobfilter=user)).
    
