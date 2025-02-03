@@ -41,11 +41,11 @@ int Fun4Sim(const int nevent = 10)
 	const double KMAGSTR = -1.025;
 
 	//! Particle generator flag.  Only one of these must be true.
-	const bool gen_pythia8  = true;
+	const bool gen_pythia8  = false;
 	const bool gen_cosmic   = false;
 	const bool gen_particle = false;
 	const bool read_hepmc   = false;
-	const bool gen_e906dim =  false; // cf. SQPrimaryParticleGen
+	const bool gen_e906dim =  true; // cf. SQPrimaryParticleGen
 
 	//! Use SQPrimaryVertexGen or not.
 	const bool SQ_vtx_gen = true;
