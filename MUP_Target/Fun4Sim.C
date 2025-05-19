@@ -48,6 +48,7 @@ int Fun4Sim(const int nevent = 10)
 	const bool gen_e906dim =  false; // cf. SQPrimaryParticleGen
 
 	//! Use SQPrimaryVertexGen or not.
+	const bool reco_mode = false;
 	const bool SQ_vtx_gen = true;
 
 	recoConsts *rc = recoConsts::instance();
@@ -278,26 +279,26 @@ int Fun4Sim(const int nevent = 10)
 	dptrigger->set_road_set_file_name("$E1039_RESOURCE/trigger/trigger_67.txt");
 	se->registerSubsystem(dptrigger);
 
-	/*
 
-	SQReco* reco = new SQReco();
-	reco->Verbosity(1);
-	reco->set_legacy_rec_container(false); 
-	reco->set_geom_file_name((string)gSystem->Getenv("E1039_RESOURCE") + "/geometry/geom_run005433.root");
-	reco->set_enable_KF(true);
-	reco->setInputTy(SQReco::E1039);
-	reco->setFitterTy(SQReco::KFREF);
-	reco->set_evt_reducer_opt("none");
-	reco->set_enable_eval_dst(true);
-	for (int ii = 0; ii <= 3; ii++) reco->add_eval_list(ii);
-	reco->set_enable_eval(true);
-	se->registerSubsystem(reco);
+	if(reco_mode==true){
+		SQReco* reco = new SQReco();
+		reco->Verbosity(1);
+		reco->set_legacy_rec_container(false); 
+		reco->set_geom_file_name((string)gSystem->Getenv("E1039_RESOURCE") + "/geometry/geom_run005433.root");
+		reco->set_enable_KF(true);
+		reco->setInputTy(SQReco::E1039);
+		reco->setFitterTy(SQReco::KFREF);
+		reco->set_evt_reducer_opt("none");
+		reco->set_enable_eval_dst(true);
+		for (int ii = 0; ii <= 3; ii++) reco->add_eval_list(ii);
+		reco->set_enable_eval(true);
+		se->registerSubsystem(reco);
 
 
-	SQVertexing* vtx = new SQVertexing();
-	vtx->Verbosity(1);
-	se->registerSubsystem(vtx);
-*/
+		SQVertexing* vtx = new SQVertexing();
+		vtx->Verbosity(1);
+		se->registerSubsystem(vtx);
+	}
 	if(read_hepmc) {
 		Fun4AllHepMCInputManager *in = new Fun4AllHepMCInputManager("HEPMCIN");
 		in->Verbosity(10);
@@ -317,11 +318,14 @@ int Fun4Sim(const int nevent = 10)
 	Fun4AllDstOutputManager *out = new Fun4AllDstOutputManager("DSTOUT", "DST.root");
 	se->registerOutputManager(out);
 
-	Fun4AllRUSOutputManager* tree = new Fun4AllRUSOutputManager();
-        tree->SetTreeName("tree");
-        tree->SetFileName("RUS.root");
-        se->registerOutputManager(tree);
- 
+
+       	Fun4AllRUSOutputManager* rus_out = new Fun4AllRUSOutputManager();
+	rus_out->SetTreeName("tree");
+	rus_out->SetFileName("RUS.root");
+	rus_out->SetMCTrueTrackMode(true); //Set it to false if you use exp data 
+	rus_out->SetProcessId(14); //for single muon use dy=11, jpsi=12,  psi'=13, single muon =14
+	se->registerOutputManager(rus_out);
+
 	const bool count_only_good_events = true;
 	se->run(nevent, count_only_good_events);
 

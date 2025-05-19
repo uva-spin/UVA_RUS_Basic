@@ -19,12 +19,30 @@ The basic file structure is defined to include only the minimum or most signific
 ## Hit-Level Variables
 | Variable Name          | Type                     | Description                                  |
 |------------------------|--------------------------|----------------------------------------------|
+| `gProcessID`           | `std::vector<int>`       | Process IDs for MC hits (only for the MC  )  |
 | `hitID`                | `std::vector<int>`       | Hit IDs for all hits                         |
+| `hitTrackID`           | `std::vector<int>`       | Track IDs for all hits                       |
 | `detectorID`           | `std::vector<int>`       | Detector IDs for all hits                    |
 | `elementID`            | `std::vector<int>`       | Element IDs associated with each hit         |
 | `driftDistance`        | `std::vector<double>`    | Drift distances for each hit                 |
 | `tdcTime`              | `std::vector<double>`    | TDC timing values for each hit               |
 
+
+
+##Truth-Level (MC) Variables *(only if `true_mode` is enabled)*
+
+| Variable Name                   | Type                  | Description                                   |
+|---------------------------------|-----------------------|-----------------------------------------------|
+| `gCharge`                       | `std::vector<int>`    | Charges of MC tracks  .                       |
+| `gTrackID`                      | `std::vector<int>`    | Track IDs  .                                  |
+| `gvx`, `gvy`, `gvz`             | `std::vector<double>` | Vertex position       		          |
+| `gpx`, `gpy`, `gpz`             | `std::vector<double>` | Momentum at the vertex                        |
+| `gx_st1`, `gy_st1`, `gz_st1`    | `std::vector<double>` | Position at Station 1                         |
+| `gpx_st1`, `gpy_st1`, `gpz_st1` | `std::vector<double>` | Momentum at Station 1                         |
+| `gx_st3`, `gy_st3`, `gz_st3`    | `std::vector<double>` | Position at Station 3                         |
+| `gpx_st3`, `gpy_st3`, `gpz_st3` | `std::vector<double>` | Momentum at Station 3                         |
+
+---
 # Simulation Guide
 
 
