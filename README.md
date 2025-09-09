@@ -85,6 +85,6 @@ This means that the Fun4All macro will keep running until we get accepted events
    
 7. Once everything looks alright, submit large jobs. For example:
    ```bash
-   ./jobscript.sh DY_Target 100 1000
+   ./jobscript.sh DY_Target 100 200
    ```
 8. For more detailed information regarding job subscriptions, read the instructions here: [SpinQuest Monte Carlo Generation on Rivanna](https://confluence.admin.virginia.edu/display/twist/SpinQuest+Monte+Carlo+Generation+on+Rivanna).
